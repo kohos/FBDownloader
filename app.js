@@ -45,7 +45,7 @@ const puppeteer = require('puppeteer');
     fs.writeFileSync(path.join(dir, `list.json`), JSON.stringify(items, null, 2));
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
-      const jsonPath = path.join(dir, `${item.id}.json`);
+      const jsonPath = path.join(dir, `${item.id}_${item.updatedDatetime.substr(0, 10)}.json`);
       let data = null;
       if (fs.existsSync(jsonPath)) {
         data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
@@ -64,7 +64,7 @@ const puppeteer = require('puppeteer');
       }
       if (data) {
         if (data.body) {
-          const textPath = path.join(dir, `${item.id}_${item.title.replace(/[?\\\/\*]/g, '')}.txt`);
+          const textPath = path.join(dir, `${item.id}_${item.updatedDatetime.substr(0, 10)}_${item.title.replace(/[?\\\/\*]/g, '')}.txt`);
           if (!fs.existsSync(textPath)) {
             // TEXT
             let text = '';
