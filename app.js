@@ -64,7 +64,7 @@ const puppeteer = require('puppeteer');
       }
       if (data) {
         if (data.body) {
-          const textPath = path.join(dir, `${item.id}_${item.updatedDatetime.substr(0, 10)}_${item.title.replace(/[?\\\/\*]/g, '')}.txt`);
+          const textPath = path.join(dir, `${item.id}_${item.updatedDatetime.substr(0, 10)}_${item.title.replace(/[?\\\/\*|]/g, '')}.txt`);
           if (!fs.existsSync(textPath)) {
             // TEXT
             let text = '';
