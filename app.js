@@ -143,6 +143,7 @@ const puppeteer = require('puppeteer');
             }
           }
         } else {
+          fs.unlinkSync(jsonPath);
           console.log(`${item.id}: NO DATA BODY: ${item.feeRequired}_${item.title}`);
         }
       } else {
